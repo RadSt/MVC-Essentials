@@ -1,0 +1,39 @@
+﻿@using Task2.Models
+@model List<Products>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Description</td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Products p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price.ToString("C")</td>
+                <td>@p.Description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
