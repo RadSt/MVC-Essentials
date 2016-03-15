@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("X=10 Y=20 Result=30", "Result", "Home",new{x=10,y=20},null) <br>
+        @Html.ActionLink("X=5 Y=5 Result=25", "Result", "Home", new{x=5,y=5},null) <br>
+        @Html.ActionLink("X=10 Y=3 Result=7", "Result", "Home",new{x=10,y=3},null) <br>
+        @Html.ActionLink("X=10 Y=2 Result=5","Result","Home",new{x=10,y=2},null) <br>
+    </div> 
+</body>
+</html>
