@@ -1,0 +1,37 @@
+﻿@using Task2.Models
+@model List<Task2.Models.Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductsList</title>
+</head>
+<body>
+<div>
+    <ul>
+        @foreach (var product in Model)
+        {
+            @Html.Action("ProductsList", product)
+        }
+    </ul>
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Date</td>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            @Html.Action("ProductsTable", product)
+        }
+    </table>
+</div>
+</body>
+</html>
