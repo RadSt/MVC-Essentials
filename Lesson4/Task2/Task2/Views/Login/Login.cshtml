@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Логин";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("AuthorizateUser", "Login"))
+{
+    <label>Логин</label>@Html.TextBox("txtLogin")<br/>
+    <label>Пароль</label>@Html.TextBox("txtPassword")<br />
+    <input class="btn btn-success" type="submit" value="ОК" />
+}
+
