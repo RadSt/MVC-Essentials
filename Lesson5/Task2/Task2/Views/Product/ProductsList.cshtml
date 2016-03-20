@@ -1,0 +1,8 @@
+﻿@model Task2.Models.Product[]
+@{
+    ViewBag.Title = "Список продуктов";
+    var grid=new WebGrid(Model);
+}
+
+<h2>@ViewBag.Title</h2>
+@grid.GetHtml()
