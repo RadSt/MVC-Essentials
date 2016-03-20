@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("CreateUser", "Register"))
+{
+    <label>Логин</label>
+    @Html.TextBox("txtLogin")
+    <br/>
+    <label>Пароль</label>
+    @Html.TextBox("txtPassword")<br/>
+    <label>Подтверждение пароля</label>
+    @Html.TextBox("txtPassConfirm")<br/>
+    <label>Емаил</label>
+    @Html.TextBox("txtEmail")<br/>
+    <input class="btn btn-success span12" type="submit" value="ОК"/>
+}
