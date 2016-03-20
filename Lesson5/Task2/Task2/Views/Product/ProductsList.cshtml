@@ -1,8 +1,11 @@
 ﻿@model Task2.Models.Product[]
 @{
     ViewBag.Title = "Список продуктов";
-    var grid=new WebGrid(Model);
+    var grid = new WebGrid(Model, rowsPerPage: 3);
 }
-
-<h2>@ViewBag.Title</h2>
-@grid.GetHtml()
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    @grid.GetHtml(
+    tableStyle: "table table-striped"
+    )
+</div>
