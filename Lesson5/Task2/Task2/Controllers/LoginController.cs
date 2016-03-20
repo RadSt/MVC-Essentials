@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Task2.Models;
 
 namespace Task2.Controllers
 {
@@ -12,15 +13,16 @@ namespace Task2.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            return View();
+            LoginModel loginController = new LoginModel();
+            return View(loginController);
         }
 
-        public ActionResult AuthorizateUser(string txtLogin, string txtPassword)
+        public ActionResult AuthorizateUser(LoginModel loginModel)
         {
             string path = Server.MapPath("~/Content/Login.txt");
             using (StreamWriter stWriter=new StreamWriter(path,false,System.Text.Encoding.Default))
             {
-                stWriter.WriteLine("Login {0} Password {1}",txtLogin,txtPassword);
+                stWriter.WriteLine("Login {0} Password {1}",loginModel.Login,loginModel.Password);
             }
             return RedirectToAction("Index", "Home");
         }
