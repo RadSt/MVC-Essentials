@@ -1,19 +1,39 @@
 ﻿@{
     ViewBag.Title = "Регистрация";
 }
+<div class="container">
+    <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm("CreateUser", "Register"))
-{
-    <label>Логин</label>
-    @Html.TextBox("txtLogin")
-    <br/>
-    <label>Пароль</label>
-    @Html.TextBox("txtPassword")<br/>
-    <label>Подтверждение пароля</label>
-    @Html.TextBox("txtPassConfirm")<br/>
-    <label>Емаил</label>
-    @Html.TextBox("txtEmail")<br/>
-    <input class="btn btn-success span12" type="submit" value="ОК"/>
-}
+    @using (Html.BeginForm("CreateUser", "Register", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <label class="control-label col-sm-2">Логин:</label>
+            <div class="col-sm-10">
+                @Html.TextBox("txtLogin", null, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Пароль:</label>
+            <div class="col-sm-10">
+                @Html.Password("txtPassword", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Подтверждение пароля:</label>
+            <div class="col-sm-10">
+                @Html.Password("txtPassConfirm", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Емаил:</label>
+            <div class="col-sm-10">
+                @Html.TextBox("txtEmail", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-success span12" type="submit" value="ОК" />
+            </div>
+        </div>
+    }
+</div>
