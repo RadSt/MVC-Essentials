@@ -12,7 +12,7 @@ namespace Task2.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            PhoneNum phoneNum =new PhoneNum(){CountryCode = "123",CityCode = "456",PhoneNumber = "7891011"};
+            PhoneNum phoneNum =new PhoneNum(){CountryCode = "(123)",CityCode = "(456)",PhoneNumber = "(7891011)"};
             return View(phoneNum);
         }
     }
