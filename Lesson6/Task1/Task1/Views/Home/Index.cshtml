@@ -1,0 +1,13 @@
+﻿@model Task1.Models.User
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel(Model)
+    <input type="submit" value="OK"/>
+}
+
+
