@@ -1,0 +1,29 @@
+﻿@model Task3.Models.Product
+
+@{
+    ViewBag.Title = "Product Edit";
+}
+
+<h2>Product Edit</h2>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="panel">
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Name)</label>
+                @Html.EditorFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Price)</label>
+                @Html.EditorFor(m => m.Price)
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-default" value="Save" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Return To Products List","Index")
+</div>
