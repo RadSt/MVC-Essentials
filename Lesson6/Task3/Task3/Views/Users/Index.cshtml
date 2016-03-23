@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Task3.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
 
-<h2>Index</h2>
+<h2>Users</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            @Html.ActionLink("Edit", "Edit", new { userId = item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { userId = item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { userId = item.UserId })
         </td>
     </tr>
 }

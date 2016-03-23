@@ -1,0 +1,27 @@
+﻿@model Task3.Models.User
+
+@{
+    ViewBag.Title = "Create User";
+}
+
+<h2>Create User</h2>
+@using(Html.BeginForm()){
+<fieldset>
+    <legend>User</legend>
+    <div>
+        <label>@Html.LabelFor(m => m.Name)</label>
+        @Html.EditorFor(m => m.Name)
+    </div>
+    <div>
+        <label>@Html.LabelFor(m => m.Email)</label>
+        @Html.EditorFor(m => m.Email)
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back To List", "Index")
+</div>

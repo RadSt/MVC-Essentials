@@ -1,0 +1,27 @@
+﻿@model Task3.Models.User
+
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<h2>Delete User</h2>
+<h3>Are you shure want to delete twis?</h3>
+<div class="row">
+    <div class="panel">
+        <div class="form-group">
+            <label>@Html.LabelFor(m => m.Name)</label>
+            <label>@Html.DisplayFor(m => m.Name)</label>
+        </div>
+        <div>
+            <label>@Html.LabelFor(m => m.Email)</label>
+            <label>@Html.DisplayFor(m => m.Email)</label>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-danger" value="Delete"/>
+    @Html.ActionLink("Return To List","Index");
+}
+
