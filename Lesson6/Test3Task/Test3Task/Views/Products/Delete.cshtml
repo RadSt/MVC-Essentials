@@ -1,0 +1,32 @@
+﻿@model Test3Task.Models.Product
+
+@{
+    ViewBag.Title = "Delete Product";
+}
+@section Body
+{
+    <h2>@ViewBag.Title</h2>
+    <h3>Are you sure want to delete this?</h3>
+    <table class="table table-striped">
+        <tr class="table-striped">
+            <th>@Html.LabelFor(m => m.Name);</th>
+            <th>@Html.LabelFor(m => m.Price)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => m.Name)</td>
+            <td>@Html.DisplayFor(m => m.Price)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        <input type="submit" class="btn btn-danger" value="Delete" />
+    }
+}
+
+@section Footer
+{
+    @Html.ActionLink("Return To Product List","Index")
+}
+
+

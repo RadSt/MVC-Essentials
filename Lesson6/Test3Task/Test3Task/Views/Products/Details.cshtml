@@ -1,0 +1,26 @@
+﻿@model Test3Task.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+@section Body
+{
+<h2>@ViewBag.Title</h2>
+    <table class="table table-striped">
+        <tr class="table-bordered">
+            <th>@Html.LabelFor(m=>m.Name)</th>
+            <th>@Html.LabelFor(m=>m.Price)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m=>m.Name)</td>
+            <td>@Html.DisplayFor(m=>m.Price)</td>
+        </tr>
+    </table>
+}
+
+@section Footer
+{
+    @Html.ActionLink("Back To The Products List","Index")
+}
+
+
