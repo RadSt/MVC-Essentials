@@ -32,6 +32,7 @@ namespace Test3Task.Controllers
         public ActionResult Create(Customer customer)
         {
             db.Customers.Add(customer);
+            db.SaveChanges();
             return RedirectToAction("CustomersList");
         }
 
