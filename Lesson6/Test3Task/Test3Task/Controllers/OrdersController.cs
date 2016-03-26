@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Test3Task.Models;
 
@@ -13,7 +11,14 @@ namespace Test3Task.Controllers
         // GET: Orders
         public ActionResult OrdersList()
         {
-            return View(db.Orders);
+            var orders = db.Orders.Include(o => o.Product).Include(o => o.Customer);
+            return View(orders.ToList());
+        }
+
+        public ActionResult Details(int orderId = 0)
+        {
+            Order order=db.Orders.Find(orderId);
+            return View(order);
         }
     }
 }
