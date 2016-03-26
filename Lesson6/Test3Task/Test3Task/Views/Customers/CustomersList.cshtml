@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<Test3Task.Models.Customer>
 
 @{
-    ViewBag.Title = "CustomersList";
+    ViewBag.Title = "Customers List";
 }
-
-<h2>CustomersList</h2>
+@section Body
+{
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,23 +24,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { CustomerId = item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { CustomerId = item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { CustomerId = item.CustomerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { CustomerId = item.CustomerId }) |
+                @Html.ActionLink("Details", "Details", new { CustomerId = item.CustomerId }) |
+                @Html.ActionLink("Delete", "Delete", new { CustomerId = item.CustomerId })
+            </td>
+        </tr>
+    }
 
 </table>
+    
+}

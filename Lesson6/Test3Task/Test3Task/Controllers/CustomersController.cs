@@ -7,7 +7,7 @@ using Test3Task.Models;
 
 namespace Test3Task.Controllers
 {
-    public class CostomersController : Controller
+    public class CustomersController : Controller
     {
         DatabaseContext db=new DatabaseContext();
         // GET: Costomers
@@ -20,6 +20,11 @@ namespace Test3Task.Controllers
         {
             Customer customer = db.Customers.Find(customerId);
             return View(customer);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }
