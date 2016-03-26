@@ -17,7 +17,12 @@
             <td>@Html.EditorFor(m=>m.Product.Name)</td>
             <td>@Html.EditorFor(m=>m.Date)</td>
         </tr>
-    </table>    
+    </table>
+}
+
+@section Footer
+{
+    @Html.ActionLink("Back To Orders List","OrdersList")
 }
 
 
