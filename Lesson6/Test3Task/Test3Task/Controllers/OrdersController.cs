@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 using Test3Task.Models;
 
@@ -17,7 +18,9 @@ namespace Test3Task.Controllers
 
         public ActionResult Details(int orderId = 0)
         {
-            Order order=db.Orders.Find(orderId);
+            var orders = db.Orders.Include(o => o.Product).Include(o => o.Customer);
+            Order order = orders
+                .FirstOrDefault(o => o.OrderId == orderId);
             return View(order);
         }
 
@@ -54,7 +57,9 @@ namespace Test3Task.Controllers
 
         public ActionResult Delete(int orderId=0)
         {
-            Order order = db.Orders.Find(orderId);
+            var orders = db.Orders.Include(o => o.Product).Include(o => o.Customer);
+            Order order = orders
+                .FirstOrDefault(o => o.OrderId == orderId);
             return View(order);
         }
 
