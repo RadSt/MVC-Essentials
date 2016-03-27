@@ -44,6 +44,14 @@ namespace Test3Task.Controllers
             return View(order);
         }
 
+        [HttpPost]
+        public ActionResult Edit(Order order)
+        {
+            db.Entry(order).State=EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("OrdersList");
+        }
+
 
 
         protected override void Dispose(bool disposing)
