@@ -52,7 +52,20 @@ namespace Test3Task.Controllers
             return RedirectToAction("OrdersList");
         }
 
+        public ActionResult Delete(int orderId=0)
+        {
+            Order order = db.Orders.Find(orderId);
+            return View(order);
+        }
 
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteOrder(int orderId)
+        {
+            Order order = db.Orders.Find(orderId);
+            db.Orders.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("OrdersList");
+        }
 
         protected override void Dispose(bool disposing)
         {
