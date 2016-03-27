@@ -145,6 +145,7 @@
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\SalesForPeriod\SalesForPeriodReportShow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -154,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\SalesForCustomer\" />
-    <Folder Include="Views\SalesForPeriod\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
