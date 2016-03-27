@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.ProductId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CustomerId)
@@ -28,7 +28,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.ProductId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerId)
@@ -38,7 +38,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { OrderId = item.OrderId }) |
-                @Html.ActionLink("Details", "Details", new { idOrderId = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { OrderId = item.OrderId }) |
                 @Html.ActionLink("Delete", "Delete", new { OrderId = item.OrderId })
             </td>
         </tr>

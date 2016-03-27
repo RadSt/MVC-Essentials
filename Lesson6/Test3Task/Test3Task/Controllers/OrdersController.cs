@@ -20,5 +20,36 @@ namespace Test3Task.Controllers
             Order order=db.Orders.Find(orderId);
             return View(order);
         }
+
+        public ActionResult Create()
+        {
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
+            ViewBag.CustomerId = new SelectList(db.Customers,"CustomerId","Name");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Order order)
+        {
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return RedirectToAction("OrdersList");
+        }
+
+        public ActionResult Edit(int orderId = 0)
+        {
+            Order order = db.Orders.Find(orderId);
+            ViewBag.ProductId=new SelectList(db.Products,"ProductId","Name");
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
+            return View(order);
+        }
+
+
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }
