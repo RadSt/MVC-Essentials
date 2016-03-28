@@ -15,8 +15,17 @@ namespace Test3Task.Controllers
         public ActionResult SalesForCustomerReportShow()
         {
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Product);
-            ViewBag.Customers = new SelectList(db.Customers, "CustomerId", "Name");
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
             return View(orders.ToList());
+        }
+        [HttpPost]
+        public ActionResult SalesForCustomerReportShow(int customerId)
+        {
+            var orders = db.Orders.Include(o => o.Customer).Include(o => o.Product);
+            var ordersFilteredByCustomer = orders
+                .Where(o => o.CustomerId == customerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name");
+            return View(ordersFilteredByCustomer);
         }
     }
 }
