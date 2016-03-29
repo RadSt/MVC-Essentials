@@ -9,7 +9,7 @@ namespace Task1.Controllers
     public class OrdersController : Controller
     {
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult AddOrder()
         {
             return View();
         }

@@ -13,7 +13,7 @@ namespace Task1.Models
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
         public string Adress { get; set; }
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
-        [RegularExpression(@"/.+@.+\..+/i", ErrorMessage = "Введите емаил верного формата")]
+        [RegularExpression(@"(?i)\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b", ErrorMessage = "Введите емаил верного формата")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
         [DataType(DataType.Date, ErrorMessage = "Поле должно быть датой")]
