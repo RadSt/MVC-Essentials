@@ -1,0 +1,32 @@
+﻿@model Test3Task.Models.Order
+
+@{
+    ViewBag.Title = "Delete";
+}
+@section Body
+{
+    <h2>@ViewBag.Title</h2>
+    <h3>Are you sure want to delete this?</h3>
+    <table class="table table-striped">
+        <tr class="table table-bordered">
+            <th>@Html.DisplayNameFor(m => m.Customer.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Product.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Date)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => m.Customer.Name)</td>
+            <td>@Html.DisplayFor(m => m.Product.Name)</td>
+            <td>@Html.DisplayFor(m => m.Date)</td>
+        </tr>
+    </table>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" class="btn btn-danger" value="Delete" />
+    }
+}
+@section Footer
+{
+    @Html.ActionLink("Back To Orders List","OrdersList")
+}
+
+
