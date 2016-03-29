@@ -18,7 +18,7 @@ namespace Task1.Models
         [RegularExpression(@"/.+@.+\..+/i",ErrorMessage = "Введите емаил верного формата")]
         public DateTime Date { get; set; }
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
-        [MustBeTrue(ErrorMesssage="Вы не согласились с условиями использования")]
+        [MustBeTrue(ErrorMessage = "Вы не согласились с условиями использования")]
         public bool TermsAccepted { get; set; }
     }
 }
