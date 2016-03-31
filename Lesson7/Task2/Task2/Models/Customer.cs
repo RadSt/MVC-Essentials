@@ -11,7 +11,7 @@ namespace Test3Task.Models
         [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Введите емаил")]
-        [RegularExpression(@"(?i)\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b", ErrorMessage = "Введите верный формат ящика")]
+        [RegularExpression(@"(?i)\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b", ErrorMessage = "Введите верный формат почты")]
         public string Email { get; set; }
         public List<Order> Orders { get; set; }
     }

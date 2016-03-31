@@ -31,9 +31,13 @@ namespace Test3Task.Controllers
         [HttpPost]
         public ActionResult Create(Product product)
         {
-            db.Products.Add(product);
-            db.SaveChanges();
-            return RedirectToAction("ProductsList");
+            if (ModelState.IsValid)
+            {
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("ProductsList");
+            }
+            return View();
         }
 
         public ActionResult Edit(int productId=0)
@@ -45,9 +49,14 @@ namespace Test3Task.Controllers
         [HttpPost]
         public ActionResult Edit(Product product)
         {
-            db.Entry(product).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("ProductsList");
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ProductsList");
+   
+            }
+            return View();
         }
 
         public ActionResult Delete(int productId=0)
