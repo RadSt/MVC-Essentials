@@ -8,7 +8,7 @@ namespace Test3Task.Models
         [Required(ErrorMessage = "Введите имя")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Введите цену")]
-        [DataType(DataType.Currency,ErrorMessage = "Неверный форма цены")]
+        [DataType(DataType.Currency,ErrorMessage = "Неверный формат цены")]
         public decimal Price { get; set; }
     }
 }
