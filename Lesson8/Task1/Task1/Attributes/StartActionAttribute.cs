@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Task1.Attributes
@@ -18,8 +19,8 @@ namespace Task1.Attributes
 
         private void WriteMessageToFile(string message)
         {
-            string path = "~/App_Data/log.txt";
-            using (StreamWriter file=new StreamWriter(path))
+            string path = HttpContext.Current.Server.MapPath("~/App_Data/log.txt");
+            using (StreamWriter file=new StreamWriter(path,true))
             {
                 file.WriteLine(message);
             }
