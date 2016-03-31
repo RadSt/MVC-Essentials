@@ -15,7 +15,7 @@ namespace Test3Task.Models
         [Required(ErrorMessage = "Введите новый пароль для подтверждения")]
         [DataType(DataType.Password)]
         [Display(Name = "Подтвердите новый пароль")]
-        [Compare("NewPassword", ErrorMessage = "Новый пароль не совпадает с введенным")]
+        [Compare("NewPassword", ErrorMessage = "Введенные пароли не совпадают")]
         public string ConfirmPassword { get; set; }
     }
 }
