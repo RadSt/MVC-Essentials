@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Test3Task.Models.Product>
+
+@{
+    ViewBag.Title = "Products List";
+}
+@section Body
+{
+    <h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th class="table-bordered]">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { productId = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { productId = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { productId = item.ProductId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+}
