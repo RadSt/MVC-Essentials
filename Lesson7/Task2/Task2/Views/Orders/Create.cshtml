@@ -14,19 +14,23 @@
              <div class="form-group">
                  @Html.LabelFor(model => model.CustomerId, "Name")
                  @Html.DropDownList("CustomerId", String.Empty)
+                 @Html.ValidationMessageFor(m=>m.CustomerId)
              </div>
              <div class="form-group">
                  @Html.LabelFor(model => model.ProductId, "Product")
                  @Html.DropDownList("ProductId", String.Empty)
+                 @Html.ValidationMessageFor(m=>m.ProductId)
              </div>
              <div class="form-group">
                  @Html.LabelFor(model => model.Date)
                  @Html.EditorFor(model => model.Date)
+                 @Html.ValidationMessageFor(m=>m.Date)
              </div>
          </div>
      </div>
     <input type="submit" class="btn btn-default" value="Save" />
  }
+    @Html.ValidationSummary()
 }
 
 @section Footer{
