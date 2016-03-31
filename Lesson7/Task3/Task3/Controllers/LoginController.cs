@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Task3.Models;
 
 namespace Task3.Controllers
 {
@@ -15,10 +17,10 @@ namespace Task3.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginPAge(string name, string password)
+        public ActionResult LoginPage(User user)
         {
-            ViewBag.Name = name;
-            ViewBag.Password = password;
+            Debug.WriteLine("prop1 " + user.Name);
+            Debug.WriteLine("prop2 " + user.Password);
             return View();
         }
 
