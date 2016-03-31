@@ -135,8 +135,10 @@
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DataBaseContext.cs" />
+    <Compile Include="Models\LocalPasswordModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
