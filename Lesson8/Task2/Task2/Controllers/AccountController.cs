@@ -76,6 +76,21 @@ namespace Test3Task.Controllers
             }
             return View(model);
         }
+
+        public ActionResult Manage(ManageMessageId? message)
+        {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess
+                    ? "Ваш пароль был изменен."
+                    : message == ManageMessageId.SetPasswordSuccess
+                        ? "Ваш пароль установлен"
+                        : message == ManageMessageId.RemoveLoginSuccess
+                            ? "Ваш логин удален"
+                            : "";
+            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            ViewBag.ReturnUrl = Url.Action("Manage");
+            return View();
+        }
         #region Helpers
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -123,6 +138,13 @@ namespace Test3Task.Controllers
                 default:
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";   
             }
+        }
+
+        public enum ManageMessageId
+        {
+            ChangePasswordSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess
         }
 
         #endregion
