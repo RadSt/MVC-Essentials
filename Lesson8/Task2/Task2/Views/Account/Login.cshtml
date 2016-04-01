@@ -4,43 +4,42 @@
     ViewBag.Title = "Login";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-@section Body
-{
-  <section id="loginForm">
-    <h2>Use a local account to log in.</h2>
-    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+
+
+
+@section Body{
+<h1>@ViewBag.Title.</h1>
+
+    @using (Html.BeginForm(new {ViewBag.ReturnUrl}))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-
-        <fieldset>
-            <legend>Log in Form</legend>
-            <ol>
-                <li>
-                    @Html.LabelFor(m => m.UserName)
-                    @Html.TextBoxFor(m => m.UserName)
-                    @Html.ValidationMessageFor(m => m.UserName)
-                </li>
-                <li>
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password)
-                </li>
-                <li>
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-                </li>
-            </ol>
-            <input type="submit" value="Log in" />
-        </fieldset>
-        <p>
-            @Html.ActionLink("Register", "Register") if you don't have an account.
-        </p>
+        <div class="row col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName)
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.TextBoxFor(m => m.Password)
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <div><input type="submit" class="btn btn-default" value="Войти" /></div>
+            <p>
+                @Html.ActionLink("Register", "Register") if you don't have an account.
+            </p> 
+        </div>
+        
     }
-</section>    
 }
 
 
