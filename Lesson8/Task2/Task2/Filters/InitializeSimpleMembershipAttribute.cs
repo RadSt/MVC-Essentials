@@ -26,11 +26,11 @@ namespace MvcInternetApplication.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<DatabaseContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new DatabaseContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -43,7 +43,7 @@ namespace MvcInternetApplication.Filters
                     // 2 параметр - таблица, которая содержит информацию о пользователях
                     // 3 параметр - имя колонки в таблице, которая отвечает за хранение логина
                     // 4 параметр - autoCreateTables автоматическое создание таблиц если они не существуют в базе
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DatabaseContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
                     SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
                     SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
