@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
+using Microsoft.Web.WebPages.OAuth;
 using MvcInternetApplication.Filters;
 using Test3Task.Models;
 using WebMatrix.WebData;
@@ -90,6 +91,38 @@ namespace Test3Task.Controllers
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Manage(LocalPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //ChangePasssword выбрасывает исключения в случае неудачной смены пароля
+                bool changePasswordSucceded;
+                try
+                {
+                    changePasswordSucceded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword,
+                        model.NewPassword);
+                }
+                catch (Exception)
+                {
+
+                    changePasswordSucceded = false;
+                }
+
+                if (changePasswordSucceded)
+                {
+                    return RedirectToAction("Manage", new {Message = ManageMessageId.ChangePasswordSuccess});
+                }
+                else
+                {
+                    ModelState.AddModelError("","Вы ввели неправильный текущий или новый пароль");
+                }
+                // Если ничего не получилось
+            }
+            return View(model);
         }
         #region Helpers
 

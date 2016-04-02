@@ -1,0 +1,15 @@
+﻿@model Test3Task.Models.LocalPasswordModel
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title</h2>
+@section Body
+{
+    <p class="success">@ViewBag.StatusMessage</p>
+    <p>Вы вошли как <strong>@User.Identity.Name</strong>
+    </p>
+    @Html.Partial("_ChangePasswordPartial");     
+}
+
