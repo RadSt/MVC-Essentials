@@ -14,7 +14,7 @@
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 @Html.ActionLink("My Magazine", "OrdersList", "Orders", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -25,6 +25,7 @@
                 <li>@Html.ActionLink("SalesForPerod Report", "SalesForPeriodReportShow", "SalesForPeriod")</li>
                 <li>@Html.ActionLink("SalesForCustomer Report", "SalesForCustomerReportShow", "SalesForCustomer")</li>
             </ul>
+            @Html.Partial("_LoginPartial")
         </div>
     </nav>
 
@@ -35,8 +36,5 @@
             @RenderSection("Footer", false)
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
