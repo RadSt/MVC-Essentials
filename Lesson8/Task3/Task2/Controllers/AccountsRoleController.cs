@@ -31,11 +31,11 @@ namespace Test3Task.Controllers
             return View(userRoles);
         }
         [Authorize(Roles = "Admin")]
-        public ActionResult AccountsChangeRole(string userId)
+        public ActionResult AccountsChangeRole(int userId=0)
         {
             UserProfile user = db.UserProfiles.Find(userId);
             var roles = (SimpleRoleProvider)Roles.Provider;
-            ViewBag.Roles = new SelectList(roles.GetAllRoles(),"Role");
+            ViewBag.Roles = new SelectList(roles.GetAllRoles(),"Roles");
             return View(user);
         }
     }

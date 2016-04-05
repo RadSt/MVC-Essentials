@@ -5,7 +5,25 @@
 }
 @section Body
 {
-  <h2>@ViewBag.Title</h2>    
+
+    <h2>@ViewBag.Title</h2>
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.DisplayNameFor(m=>m.UserId)
+                    @Html.DisplayFor(m=>m.UserId)
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(m=>m.UserName)
+                    @Html.DisplayFor(m=>m.UserName)
+                </div>
+                <div class="form-group">
+                    @Html.Label("Роль")
+                    @Html.DropDownList("Roles", String.Empty)
+                </div>
+            </div>
+        </div>
+    }
 }
-
-
