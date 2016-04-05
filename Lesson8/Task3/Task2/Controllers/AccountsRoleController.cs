@@ -35,8 +35,15 @@ namespace Test3Task.Controllers
         {
             UserProfile user = db.UserProfiles.Find(userId);
             var roles = (SimpleRoleProvider)Roles.Provider;
-            ViewBag.Roles = new SelectList(roles.GetAllRoles(),"Roles");
+            ViewBag.Role = new SelectList(roles.GetAllRoles(), "Role");
             return View(user);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AccountChangeRole(UserProfile user)
+        {
+            Roles.AddUserToRole(user.UserName, "");
+            return RedirectToAction("AccountsRoleList");
         }
     }
 }

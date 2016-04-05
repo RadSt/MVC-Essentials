@@ -9,19 +9,29 @@
     <h2>@ViewBag.Title</h2>
     @using (Html.BeginForm())
     {
+        @Html.ValidationSummary()
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    @Html.DisplayNameFor(m=>m.UserId)
-                    @Html.DisplayFor(m=>m.UserId)
+                   @Html.DisplayNameFor(m => m.UserId)
+                <br />
+                @Html.EditorFor(m => m.UserId)
+                <br />
+                @Html.ValidationMessageFor(m => m.UserId)
                 </div>
                 <div class="form-group">
-                    @Html.DisplayNameFor(m=>m.UserName)
-                    @Html.DisplayFor(m=>m.UserName)
+                    @Html.DisplayNameFor(m => m.UserName)
+                    <br/>
+                    @Html.EditorFor(m => m.UserName)
+                    <br/>
+                    @Html.ValidationMessageFor(m => m.UserName)
                 </div>
                 <div class="form-group">
                     @Html.Label("Роль")
-                    @Html.DropDownList("Roles", String.Empty)
+                    @Html.DropDownList("Role", String.Empty)
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Сохранить"/>
                 </div>
             </div>
         </div>
