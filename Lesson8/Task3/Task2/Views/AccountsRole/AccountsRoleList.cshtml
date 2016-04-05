@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Test3Task.Models.AccountsRole>
+
+@{
+    ViewBag.Title = "Список Пользователей";
+}
+
+@section Body{
+    <h1>@ViewBag.Title</h1>
+    <table class="table table-striped">
+        <tr class="table-bordered">
+            <th>@Html.DisplayNameFor(m => m.UserId)</th>
+            <th>@Html.DisplayNameFor(m => m.UserName)</th>
+            <th>@Html.DisplayNameFor(m => m.Role)</th>
+        </tr>
+
+        @foreach (var accRole in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => accRole.UserId)</td>
+                <td>@Html.DisplayFor(m => accRole.UserName)</td>
+                <td>@Html.DisplayFor(m => accRole.Role)</td>
+                <td>@Html.ActionLink("Изменить", "AccountsChangeRole", new { UserId = accRole.UserId })</td>
+            </tr>
+        }
+    </table>
+}
