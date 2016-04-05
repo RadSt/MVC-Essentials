@@ -1,0 +1,32 @@
+﻿@model Test3Task.Models.Customer
+
+@{
+    ViewBag.Title = "Delete Customer";
+}
+@section Body
+{
+    <h2>@ViewBag.Title</h2>
+    <h3>Are you sure want delete this?</h3>
+    <table class="table table-striped">
+        <tr class="table-bordered">
+            <th>@Html.LabelFor(m => m.Name)</th>
+            <th>@Html.LabelFor(m => m.Password)</th>
+            <th>@Html.LabelFor(m => m.Email)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => m.Name)</td>
+            <td>@Html.DisplayFor(m => m.Password)</td>
+            <td>@Html.DisplayFor(m => m.Email)</td>
+        </tr>
+    </table>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" class="btn btn-danger" value="Delete" />
+    }
+}
+@section Footer
+{
+    @Html.ActionLink("Back To Customers List","CustomersList")
+}
+
+

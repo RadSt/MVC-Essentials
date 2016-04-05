@@ -1,0 +1,28 @@
+﻿@model Test3Task.Models.Order
+
+@{
+    ViewBag.Title = "Order Details";
+}
+@section Body
+{
+    <h2>@ViewBag.Title</h2>
+    <table class="table table-striped">
+        <tr class="table-bordered">
+            <th>@Html.LabelFor(m=>m.Customer.Name)</th>
+            <th>@Html.LabelFor(m=>m.Product.Name)</th>
+            <th>@Html.LabelFor(m=>m.Date)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => m.Customer.Name)</td>
+            <td>@Html.DisplayFor(m => m.Product.Name)</td>
+            <td>@Html.DisplayFor(m=>m.Date)</td>
+        </tr>
+    </table>
+}
+
+@section Footer
+{
+    @Html.ActionLink("Back To Orders List","OrdersList")
+}
+
+
