@@ -49,9 +49,9 @@ namespace MvcInternetApplication.Filters
                     SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
 
                     // Проверка наличия роли Moderator
-                    if (!roles.RoleExists("Moderator"))
+                    if (!roles.RoleExists("User"))
                     {
-                        roles.CreateRole("Moderator");
+                        roles.CreateRole("User");
                     }
                     // Проверка наличия роли Admin
                     if (!roles.RoleExists("Admin"))
@@ -67,7 +67,7 @@ namespace MvcInternetApplication.Filters
                     if (membership.GetUser("user1", false) == null)
                     {
                         membership.CreateUserAndAccount("user1", "qwe123");
-                        roles.AddUsersToRoles(new[] { "user1" }, new[] { "Moderator" });
+                        roles.AddUsersToRoles(new[] { "user1" }, new[] { "User" });
                     }
                 }
                 catch (Exception ex)

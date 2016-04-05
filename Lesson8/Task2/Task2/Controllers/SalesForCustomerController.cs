@@ -12,6 +12,7 @@ namespace Test3Task.Controllers
     {
         DatabaseContext db=new DatabaseContext();
         // GET: SalesForCustomer
+        [Authorize]
         public ActionResult SalesForCustomerReportShow()
         {
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Product);
@@ -19,6 +20,7 @@ namespace Test3Task.Controllers
             return View(orders.ToList());
         }
         [HttpPost]
+        [Authorize]
         public ActionResult SalesForCustomerReportShow(int customerId)
         {
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Product);

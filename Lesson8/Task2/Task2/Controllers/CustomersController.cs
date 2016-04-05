@@ -11,24 +11,25 @@ namespace Test3Task.Controllers
     public class CustomersController : Controller
     {
         DatabaseContext db=new DatabaseContext();
-        // GET: Costomers
+        // GET: Customers
+        [Authorize]
         public ActionResult CustomersList()
         {
             return View(db.Customers);
         }
-
+        [Authorize]
         public ActionResult Details(int customerId = 0)
         {
             Customer customer = db.Customers.Find(customerId);
             return View(customer);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
@@ -39,14 +40,14 @@ namespace Test3Task.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int customerId = 0)
         {
             Customer customer = db.Customers.Find(customerId);
             return View(customer);
         }
-
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
@@ -58,14 +59,14 @@ namespace Test3Task.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int customerId)
         {
             Customer customer = db.Customers.Find(customerId);
             return View(customer);
         }
-
         [HttpPost,ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteCustomer(int customerId)
         {
             Customer customer = db.Customers.Find(customerId);

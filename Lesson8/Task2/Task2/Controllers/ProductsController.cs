@@ -12,23 +12,24 @@ namespace Test3Task.Controllers
     {
         DatabaseContext db=new DatabaseContext();
         // GET: Products
+        [Authorize]
         public ActionResult ProductsList()
         {
             return View(db.Products);
         }
-
+        [Authorize]
         public ActionResult Details(int productId=0)
         {
             Product product = db.Products.Find(productId);
             return View(product);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
@@ -39,14 +40,14 @@ namespace Test3Task.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int productId=0)
         {
             Product product = db.Products.Find(productId);
             return View(product);
         }
-        
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
@@ -58,7 +59,7 @@ namespace Test3Task.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles="Admin")]
         public ActionResult Delete(int productId=0)
         {
             Product product = db.Products.Find(productId);
@@ -66,6 +67,7 @@ namespace Test3Task.Controllers
         }
 
         [HttpPost,ActionName("Delete")]
+        [Authorize(Roles="Admin")]
         public ActionResult DeleteProduct(int productId=0)
         {
             Product product = db.Products.Find(productId);
