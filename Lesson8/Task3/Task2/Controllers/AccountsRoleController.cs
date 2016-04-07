@@ -40,9 +40,11 @@ namespace Test3Task.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult AccountChangeRole(UserProfile user)
+        public ActionResult AccountsChangeRole(UserProfile user, string role)
         {
-            Roles.AddUserToRole(user.UserName, "");
+            string[] userRoles=Roles.GetRolesForUser(user.UserName);
+            Roles.RemoveUserFromRoles(user.UserName,userRoles);
+            Roles.AddUserToRole(user.UserName, role);
             return RedirectToAction("AccountsRoleList");
         }
     }
