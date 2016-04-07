@@ -1,0 +1,21 @@
+﻿@model Task1.Models.Product[]
+
+@{
+    ViewBag.Title = "ShowProducts";
+}
+
+<h2>ShowProducts</h2>
+<table class=" table table-striped">
+    <tr class="table-bordered0">
+        <th>@Html.DisplayNameFor(m => Model[1].Id)</th>
+        <th>@Html.DisplayNameFor(m => Model[1].ProductName)</th>
+    </tr>
+    @for (int i = 0; i < Model.Length; i++)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m=>Model[i].Id)</td>
+            <td>@Html.DisplayFor(m=>Model[i].ProductName)</td>
+        </tr>
+    }
+</table>
+
