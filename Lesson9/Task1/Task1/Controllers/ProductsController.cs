@@ -10,12 +10,28 @@ namespace Task1.Controllers
     public class ProductsController : Controller
     {
 
-        ProductsArray productsArray=new ProductsArray();
         // GET: Products
         public ActionResult ShowProducts()
         {
-            Product[] products=productsArray.CreateProductsArray();
-            return View(products);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ShowProducts(int? prodId)
+        {
+            return View("ShowProducts", (object)prodId);
+        }
+
+        public ActionResult ProductsData(int? prodId)
+        {
+            var selectedProducts = ProductsDataBase.Products;
+            if (prodId != null)
+            {
+                selectedProducts = selectedProducts.
+                Where(p => p.Id > prodId).
+                Take(5).ToArray();
+            }
+            return PartialView(selectedProducts);
         }
     }
 }

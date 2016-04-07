@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Task1.Models.Product>
+@foreach(var product in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(m => product.Id)</td>
+        <td>@Html.DisplayFor(m => product.ProductName)</td>
+    </tr>
+}

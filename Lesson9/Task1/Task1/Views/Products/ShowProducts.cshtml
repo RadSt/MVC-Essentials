@@ -1,21 +1,39 @@
-﻿@model Task1.Models.Product[]
-
-@{
+﻿@{
     ViewBag.Title = "ShowProducts";
+    var options = new AjaxOptions
+    {
+        UpdateTargetId = "tabledata",
+        Url = Url.Action("ProductsData"),
+        LoadingElementId = "loadingIndicator"
+    };
 }
 
 <h2>ShowProducts</h2>
-<table class=" table table-striped">
-    <tr class="table-bordered0">
-        <th>@Html.DisplayNameFor(m => Model[1].Id)</th>
-        <th>@Html.DisplayNameFor(m => Model[1].ProductName)</th>
-    </tr>
-    @for (int i = 0; i < Model.Length; i++)
-    {
-        <tr>
-            <td>@Html.DisplayFor(m=>Model[i].Id)</td>
-            <td>@Html.DisplayFor(m=>Model[i].ProductName)</td>
-        </tr>
-    }
-</table>
 
+@using (Ajax.BeginForm(options))
+{
+    <div id="loadingIndicator" style="display: none;">Loading...</div>
+    <table class=" table table-striped">
+        <tr class="table-bordered0">
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tbody id="tabledata">
+        @Html.Action("ProductsData", new {ProdId = Model})
+        </tbody>
+    </table>
+}
+
+@foreach (var elQuan in new[] {0, 5, 10})
+{
+    @Ajax.ActionLink("Elem " + elQuan, "ProductsData", new {prodId = elQuan},
+        new AjaxOptions
+        {
+            UpdateTargetId = "tabledata",
+            LoadingElementId = "loadingIndicator"
+        })
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*Ненавязивый JavaScript для выполнения запроса на сервер без полного обновления страницы*@
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
