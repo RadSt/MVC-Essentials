@@ -1,4 +1,5 @@
-﻿@{
+﻿@model _002_SimpleAjaxApplication.Models.OrderFilterOptions
+@{
     ViewBag.Title = "Orders";
 
     // UpdateTargetId - элемент на странице, который будет обновляется после получения новых данных со стороны сервера.
@@ -30,13 +31,17 @@
         </thead>
 
         <tbody id="tabledata">
-            @Html.Action("OrdersData", new { id = Model })
+            @Html.Action("OrdersData")
         </tbody>
 
     </table>
     <p>
         @*При отправке обратного запроса на сервер, в форме будет содержаться поле id которое методом действия будет использоваться для фильтрации данных*@
-        @Html.DropDownList("id", new SelectList(new[] { "All", "Ivanov", "Petrov", "Fedorov" }, (Model ?? "All")))
+        @Html.DropDownList("CustomerName", new SelectList(new[] { "All", "Ivanov", "Petrov", "Fedorov" }, (Model.CustomerName ?? "All")))
+        @Html.DropDownList("ProductName", new SelectList(
+       new[] { "All", "Product 1", "Product 2", "Product 3", "Product 4", "Product 5" }, (Model.ProductName ?? "All")))
+        @Html.DropDownList("ProductQuant", new SelectList(
+       new[] { "All", "1", "2", "3", "7", "9", "12", "6" }, (Model.ProductQuant ?? "All")))
         <input type="submit" value="Submit" />
     </p>
 }
