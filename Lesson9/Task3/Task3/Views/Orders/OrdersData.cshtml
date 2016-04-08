@@ -1,0 +1,19 @@
+﻿@model Task3.Models.Order
+<h1>
+    @Html.DisplayFor(m => m.Customer)
+</h1>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(m=>m.Id)</th>
+        <th>@Html.DisplayNameFor(m=>m.Customer)</th>
+        <th>@Html.DisplayNameFor(m=>m.Product)</th>
+        <th>@Html.DisplayNameFor(m=>m.Quantity)</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(m=>m.Id)</td>
+        <td>@Html.DisplayFor(m=>m.Customer)</td>
+        <td>@Html.DisplayNameFor(m=>m.Product)</td>
+        <td>@Html.DisplayNameFor(m=>m.Quantity)</td>
+    </tr>
+</table>
+
