@@ -9,17 +9,23 @@ namespace Task3.Controllers
 {
     public class OrdersController : Controller
     {
-        IEnumerable<Order> order = OrdersDatabase.Orders;
+        IEnumerable<Order> orders = new List<Order>();
         // GET: Default
         public ActionResult ShowOrders()
         {
-            return View(order);
+            orders = OrdersDatabase.Orders;
+            string[] customersList = orders.Select(o=>o.Customer).Distinct().ToArray();
+            return View(customersList);
         }
 
         public ActionResult OrdersData(string id)
         {
-            order = order.Where(o => o.Customer == id);
-            return PartialView(order);
+            if (!string.IsNullOrEmpty(id))
+            {
+                orders = OrdersDatabase.Orders;
+                orders = orders.Where(o => o.Customer == id);
+            }
+            return PartialView(orders);
         }
     }
 }

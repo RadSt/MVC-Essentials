@@ -1,19 +1,20 @@
-﻿@model Task3.Models.Order
-<h1>
-    @Html.DisplayFor(m => m.Customer)
-</h1>
-<table>
-    <tr>
-        <th>@Html.DisplayNameFor(m=>m.Id)</th>
-        <th>@Html.DisplayNameFor(m=>m.Customer)</th>
-        <th>@Html.DisplayNameFor(m=>m.Product)</th>
-        <th>@Html.DisplayNameFor(m=>m.Quantity)</th>
-    </tr>
-    <tr>
-        <td>@Html.DisplayFor(m=>m.Id)</td>
-        <td>@Html.DisplayFor(m=>m.Customer)</td>
-        <td>@Html.DisplayNameFor(m=>m.Product)</td>
-        <td>@Html.DisplayNameFor(m=>m.Quantity)</td>
-    </tr>
-</table>
+﻿@model IEnumerable<Task3.Models.Order>
+@foreach (var order in Model)
+{
+    <table>
+        <tr>
+            <th>@Html.LabelFor(m => order.Id)</th>
+            <th>@Html.LabelFor(m => order.Customer)</th>
+            <th>@Html.LabelFor(m => order.Product)</th>
+            <th>@Html.LabelFor(m => order.Quantity)</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => order.Id)</td>
+            <td>@Html.DisplayFor(m => order.Customer)</td>
+            <td>@Html.DisplayFor(m => order.Product)</td>
+            <td>@Html.DisplayFor(m => order.Quantity)</td>
+        </tr>
+    </table>
+}
+
 

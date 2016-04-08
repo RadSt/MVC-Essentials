@@ -1,10 +1,9 @@
-﻿@model IEnumerable<Task3.Models.Order>
-
+﻿@model String[]
 @{
     ViewBag.Title = "ShowOrders";
     AjaxOptions ajxOptions = new AjaxOptions()
     {
-        UpdateTargetId = "table",
+        UpdateTargetId = "tableDiv",
         Url = Url.Action("OrdersData"),
         LoadingElementId = "loadingIndicator"
 
@@ -15,16 +14,24 @@
 @using (Ajax.BeginForm(ajxOptions))
 {
     <div id="loadingIndicator" style="display: none;">Loading...</div>
-}
-
-@foreach (var order in Model.Customer)
-{
-    <div style="margin-right: 5px; float: left;">
-        @Ajax.ActionLink(order,"OrdersData",new{id = order},
-        new AjaxOptions(
-        {
-            UpdateTargetId = "table",
-            LoadingElementId = "loadingIndicator"
-        }))
+    <div id="tableDiv">
+        @Html.Action("OrdersData")
     </div>
 }
+
+@foreach (string customer in Model)
+{
+    <div style="margin-right: 5px; float: left;">
+        @Ajax.ActionLink(customer, "OrdersData", new{ id = customer },
+        new AjaxOptions()
+        {
+            UpdateTargetId = "tableDiv",
+            LoadingElementId = "loadingIndicator"
+        })
+    </div>
+}
+@section Scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
